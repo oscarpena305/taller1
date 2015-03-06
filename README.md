@@ -86,7 +86,7 @@ void insert( ListNodePtr *sPtr, char value )
 
  } /* fin if */
  else {
- printf( "%c not inserted. No memory available.\n", value );
+ printf( "%c No insertado.\n", value );
  } /* fin else */
 
  } /*  Función de inserción final*/
@@ -106,7 +106,7 @@ void insert( ListNodePtr *sPtr, char value )
  *topPtr = newPtr;
  } /* Fin if */
  else {
- printf( "%c not inserted. No memory available.\n", info );
+ printf( "%c No insertado.\n", info );
  } /* Fin else */
  } /* Fin funcion push */
 
@@ -116,7 +116,7 @@ void insert( ListNodePtr *sPtr, char value )
 
  /* if si la lista esta vacia */
  if ( !currentPtr ) {
- printf( "List is empty.\n\n" );
+ printf( "Lista vacia.\n\n" );
  } /* Fin if */
  else {
 
