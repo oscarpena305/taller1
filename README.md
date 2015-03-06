@@ -49,3 +49,83 @@ void printList( ListaNodePtr currentPtr );
  } /* fin del while */
 
  return stack; /* Volver a lista invertida */
+return stack; /* Volver a lista invertida */
+}
+void insert( ListNodePtr *sPtr, char value )
+ {
+ ListNodePtr newPtr; /* Nodo nuevo */
+ ListNodePtr previousPtr; /* Nodo anterior */
+ ListNodePtr currentPtr; /* Nodo actual */
+
+ /* Asignar dinámicamente la memoria */
+ newPtr = malloc( sizeof( ListNode ) );
+
+ /* if newPtr no es igual a NULL */
+ if ( newPtr ) {
+ newPtr->data = value;
+ newPtr->nextPtr = NULL;
+
+ previousPtr = NULL;
+ currentPtr = *sPtr; /* Establece currentPtr para iniciar la lista */
+
+ /*Bucle para encontrar la ubicación correcta en la lista */
+ while ( currentPtr != NULL && value > currentPtr->data ) {
+ previousPtr = currentPtr;
+ currentPtr = currentPtr->nextPtr;
+ } /* Fin del while */
+
+ /* Insertar nuevo principio de la lista */
+ if ( previousPtr == NULL ) {
+ newPtr->nextPtr = *sPtr;
+ *sPtr = newPtr;
+ } /* Fin de if */
+ else { /* Insertar nodo entre previousPtr y currentPtr */
+ previousPtr->nextPtr = newPtr;
+ newPtr->nextPtr = currentPtr;
+ } /* fin else */
+
+ } /* fin if */
+ else {
+ printf( "%c not inserted. No memory available.\n", value );
+ } /* fin else */
+
+ } /*  Función de inserción final*/
+
+ /* Insertar un nodo en la parte superior de pila */
+ void push( ListNodePtr *topPtr, char info )
+ {
+ ListNodePtr newPtr; /* puntero del nodo temporal */
+
+ /* Asignar memoria */
+ newPtr = malloc( sizeof( ListNode ) );
+
+ /*if si la memoria no se asigno inserte nodo en la parte superior de la lista  */
+ if ( newPtr ) {
+ newPtr->data = info;
+ newPtr->nextPtr = *topPtr;
+ *topPtr = newPtr;
+ } /* Fin if */
+ else {
+ printf( "%c not inserted. No memory available.\n", info );
+ } /* Fin else */
+ } /* Fin funcion push */
+
+/* Imprimir la lista */
+ void printList( ListNodePtr currentPtr )
+ {
+
+ /* if si la lista esta vacia */
+ if ( !currentPtr ) {
+ printf( "List is empty.\n\n" );
+ } /* Fin if */
+ else {
+
+ /*  Bucle while currentPtr no es igual a NULL*/
+ while ( currentPtr ) {
+ printf( "%c ", currentPtr->data );
+ currentPtr = currentPtr->nextPtr;
+ } /* Fin while */
+
+ printf( "*\n\n" );
+ } /* Fin else */
+ } /* Imprimir lista */
