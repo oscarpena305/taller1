@@ -1,40 +1,57 @@
-
 #include <stdio.h>
 #include <stdlib.h>
-/* Estructura de la lista del nodo */
-struct ListaNode {
-int data; /* Datos del nodo */
-struct ListaNode *nextPtr; /* Puntero al siguiente nodo */
-  }; /* Final de la estructura de la lista del nodo */
- typedef struct ListaNode ListaNode;
-typedef ListaNode *ListaNodePtr;
- /* Prototipos de funciones */
- ListaNodePtr reverseList( ListaNodePtr currentPtr );
- void insert( ListaNodePtr *sPtr, int value );
-void printList( ListaNodePtr currentPtr );
- void push( ListaNodePtr *topPtr, int info );
+
+
+
+struct ListNode {
+int data; 
+struct ListNode *nextPtr; 
+  }; 
+ typedef struct ListNode ListNode;
+typedef ListNode *ListNodePtr;
+
+ ListNodePtr reverseList( ListNodePtr currentPtr );
+ void insert( ListNodePtr *sPtr, int value );
+void printList( ListNodePtr currentPtr );
+ void push( ListNodePtr *topPtr, int info );
+  int deci;
 
  int main()
  {
- ListaNodePtr listatr = NULL; /* Lista de punteros */
- int i; 
- for ( i = 1; i <= 6; i++ ) {
- insert( &listPtr, i );
- } 
+ printf("En este programa un usuario ingresara n cantidad de datos que desee en una lista, tales datos son numeros enteros, el programa almacenara estos e imprimira la lista al revez");
+ ListNodePtr listPtr = NULL; 
 
- printf( "la lista es:\n" );
+ int i;
+ int can;
+ int num;
+
+ 	printf("Ingrese la cantida de numeros de la lista\n");
+	scanf("%d",&can);
+	
+ 	for(i=1;i<=can;i++)
+	{	
+
+	printf("\n\n ingrese el numero   %d ",i);
+	scanf("%d",&num);
+		insert( &listPtr,num);
+
+	}
+
+ printf( "La lista es:\n" );
  printList( listPtr );
 
- /* Revertir la lista y visualización de resultados */
- printf( "la lista en reverso es:\n" );
- printList( reverseList( listaPtr ) );
+/* Revertir la lista y visualización de resultados */
+ printf( "La lista en reversa es:\n" );
+ printList( reverseList( listPtr ) );
 
- return 0; } 
+ return 0; 
 
+ } 
+ 
  /* Creacion de la lista en el orden inverso de la lista */
- ListaNodePtr reverseList( ListaNodePtr currentPtr )
+ ListNodePtr reverseList( ListNodePtr currentPtr )
  {
- ListaNodePtr stack = NULL; /* Puntero de la lista invertida*/
+ ListNodePtr stack = NULL;/* Puntero de la lista invertida*/
 
  /*Bucle de la lista currentPtr */
  while ( currentPtr != NULL ) {
@@ -42,16 +59,15 @@ void printList( ListaNodePtr currentPtr );
  /* Empujar elemento actual en la pila */
  push( &stack, currentPtr->data );
  currentPtr = currentPtr->nextPtr;
- } /* fin del while */
+ } 
 
- return stack; /* Volver a lista invertida */
-return stack; /* Volver a lista invertida */
+ return stack;/* Volver a lista invertida */
 }
-void insert( ListNodePtr *sPtr, char value )
+void insert( ListNodePtr *sPtr, int value )
  {
- ListNodePtr newPtr; /* Nodo nuevo */
- ListNodePtr previousPtr; /* Nodo anterior */
- ListNodePtr currentPtr; /* Nodo actual */
+ ListNodePtr newPtr; /* nuevo nodo*/
+ ListNodePtr previousPtr; /* nodo anterior*/
+ ListNodePtr currentPtr; /* nodo*/
 
  /* Asignar dinámicamente la memoria */
  newPtr = malloc( sizeof( ListNode ) );
@@ -68,24 +84,24 @@ void insert( ListNodePtr *sPtr, char value )
  while ( currentPtr != NULL && value > currentPtr->data ) {
  previousPtr = currentPtr;
  currentPtr = currentPtr->nextPtr;
- } /* Fin del while */
+ } 
 
  /* Insertar nuevo principio de la lista */
  if ( previousPtr == NULL ) {
  newPtr->nextPtr = *sPtr;
  *sPtr = newPtr;
- } /* Fin de if */
+ } 
  else { /* Insertar nodo entre previousPtr y currentPtr */
  previousPtr->nextPtr = newPtr;
  newPtr->nextPtr = currentPtr;
- } /* fin else */
+ } 
 
- } /* fin if */
+ } 
  else {
- printf( "%c No insertado.\n", value );
- } /* fin else */
+ printf( "%c no insertado.\n", value );
+ } 
 
- } /*  Función de inserción final*/
+ } 
 
  /* Insertar un nodo en la parte superior de pila */
  void push( ListNodePtr *topPtr, int info )
@@ -95,33 +111,26 @@ void insert( ListNodePtr *sPtr, char value )
  /* Asignar memoria */
  newPtr = malloc( sizeof( ListNode ) );
 
- /*if si la memoria no se asigno inserte nodo en la parte superior de la lista  */
  if ( newPtr ) {
  newPtr->data = info;
  newPtr->nextPtr = *topPtr;
  *topPtr = newPtr;
- } /* Fin if */
+ } 
  else {
- printf( "%c No insertado.\n", info );
- } /* Fin else */
- } /* Fin funcion push */
+ printf( "%c no insertado.\n", info );
+ } 
+ } 
 
-/* Imprimir la lista */
+/* imprimir la lista*/
  void printList( ListNodePtr currentPtr )
  {
-
- /* if si la lista esta vacia */
  if ( !currentPtr ) {
  printf( "Lista vacia.\n\n" );
- } /* Fin if */
+ } /* end if */
  else {
 
  /*  Bucle while currentPtr no es igual a NULL*/
  while ( currentPtr ) {
- printf( "%c ", currentPtr->data );
+ printf( "%d ", currentPtr->data );
  currentPtr = currentPtr->nextPtr;
- } /* Fin while */
-
- printf( "*\n\n" );
- } /* Fin else */
- } /* Imprimir lista */
+ } 
