@@ -18,7 +18,7 @@ void printList( ListNodePtr currentPtr );
 
  int main()
  {
- printf("En este programa un usuario ingresara n cantidad de datos que desee en una lista, tales datos son numeros enteros, el programa almacenara estos e imprimira la lista al revez");
+ printf("En este programa un usuario ingresara n cantidad de datos que desee en una lista, tales datos son numeros enteros, el programa almacenara estos e imprimira la lista al revés");
  ListNodePtr listPtr = NULL; 
 
  int i;
